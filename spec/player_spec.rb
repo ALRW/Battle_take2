@@ -2,10 +2,16 @@ require 'player'
 
 describe Player do
 
-  let(:player){ described_class.new(name) }
-  let(:name){"Batman"}
-
+  let(:player1){ described_class.new(name) }
+  let(:name){"Pikachu"}
+  let(:player2){described_class.new(name2)}
+  let(:name2){"Batman"}
   it "expect to return a name" do
-    expect(player.name).to eq(name)
+    expect(player1.name).to eq(name)
+  end
+  context 'when attacked' do
+    it 'looses health' do
+      expect{player1.attack(player2)}.to change{player2.health}.from(100).to(90)
+    end
   end
 end

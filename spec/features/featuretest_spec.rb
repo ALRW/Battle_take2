@@ -12,4 +12,9 @@ feature 'Battle!' do
     click_button('Attack')
     expect(page).to have_content('Pikachu does a MASSIVE attack on Batman')
   end
+  scenario 'player 1\'s attack reduces player 2\'s health' do
+    click_button('Attack')
+    click_button('Return to the battle')
+    expect(page).to have_content("Batman's HP: 90")
+  end
 end
