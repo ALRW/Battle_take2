@@ -14,7 +14,7 @@ describe Player do
   end
   context 'when attacked' do
     it 'looses health' do
-      expect{player1.attack(player2)}.to change{player2.health}.from(100).to(90)
+      expect{player1.reduce_health}.to change{player1.health}.from(100).to(90)
     end
   end
 end
