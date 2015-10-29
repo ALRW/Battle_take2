@@ -9,6 +9,9 @@ describe Player do
   it "expect to return a name" do
     expect(player1.name).to eq(name)
   end
+  it 'has a default number of hp' do
+    expect(player1.health).to eq(Player::DEFAULT_HP)
+  end
   context 'when attacked' do
     it 'looses health' do
       expect{player1.attack(player2)}.to change{player2.health}.from(100).to(90)
