@@ -17,12 +17,12 @@ attr_reader :current_turn
     @players.last
   end
   def turn_switcher
-    @current_turn = opponent(current_turn)
+    @current_turn = opponent_of(current_turn)
   end
 
   private
 
-  def opponent(current_player)
+  def opponent_of(current_player)
     @players.select{|player| player != current_player}.first
   end
 end
