@@ -5,18 +5,31 @@ feature 'Battle!' do
   scenario 'enter player names'do
     expect(page).to have_content("Pikachu vs Batman")
   end
-  scenario 'player 1 can see player2\'s hitpoints' do
+
+  scenario 'you can see player2\'s hitpoints' do
     expect(page).to have_content("Batman's HP: 100")
   end
-  scenario 'player 1 attacks player 2' do
+
+  scenario 'you can see player1\'s hitpoints' do
+    expect(page).to have_content("Pikachu's HP: 100")
+  end
+
+  scenario 'player 1\'s attack reduces player 2\'s health and gives confirmation' do
     click_button('Attack')
     expect(page).to have_content('Pikachu does a MASSIVE attack on Batman')
-  end
-  scenario 'player 1\'s attack reduces player 2\'s health' do
-    click_button('Attack')
     click_button('Return to the battle')
     expect(page).to have_content("Batman's HP: 90")
   end
+
+  scenario 'player 2\'s attack reduces player 1\'s health and gives confirmation' do
+    click_button('Attack')
+    click_button('Return to the battle')
+    click_button('Attack')
+    expect(page).to have_content('Batman does a MASSIVE attack on Pikachu')
+        click_button('Return to the battle')
+    expect(page).to have_content("Pikachu's HP: 90")
+  end
+
   describe 'Switching turns' do
       context 'we can see the current turn' do
         scenario 'At the start of the game it is player 1\'s turn' do
