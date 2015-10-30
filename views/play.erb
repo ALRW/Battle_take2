@@ -1,3 +1,4 @@
+<% if @game.player_2.health > 0 && @game.player_1.health > 0 %>
 <h1><%="#{@game.player_1.name} vs #{@game.player_2.name}"%></h1>
 <h2><%="#{@game.player_1.name}'s HP: #{@game.player_1.health}"%></h2>
 <h2><%="#{@game.player_2.name}'s HP: #{@game.player_2.health}"%></h2>
@@ -5,3 +6,6 @@
 <form action="/attack">
   <input type="submit" value="Attack">
 </form>
+<% else%>
+<h1><%="#{@game.current_turn.name} Loses!"%></h1>
+<%end%>

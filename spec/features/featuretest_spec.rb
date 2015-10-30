@@ -44,5 +44,11 @@ feature 'Battle!' do
         end
       end
   end
-
+  scenario 'Player runs out of hitpoints' do
+    19.times do
+      click_button('Attack')
+      click_button('Return to the battle')
+    end
+    expect(page).to have_content("Batman Loses!")
+  end
 end
