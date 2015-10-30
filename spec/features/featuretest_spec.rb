@@ -17,4 +17,19 @@ feature 'Battle!' do
     click_button('Return to the battle')
     expect(page).to have_content("Batman's HP: 90")
   end
+  describe 'Switching turns' do
+      context 'we can see the current turn' do
+        scenario 'At the start of the game it is player 1\'s turn' do
+          expect(page).to have_content("It is Pikachu's turn")
+        end
+      end
+      context 'player 1 has taken their turn' do
+        scenario 'it should be player 2\'s turn' do
+          click_button('Attack')
+          click_button('Return to the battle')
+          expect(page).to have_content("It is Batman's turn")
+        end
+      end
+  end
+
 end

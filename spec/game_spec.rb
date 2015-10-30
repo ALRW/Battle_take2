@@ -9,4 +9,16 @@ describe Game do
     expect(player1).to receive(:reduce_health)
     game.attack(player1)
   end
+  describe '#turn-switcher' do
+    it 'changes the player whose turn it is' do
+      game.turn_switcher
+      expect(game.current_turn).to eq(player2)
+    end
+  end
+  describe '#current_turn' do
+    it 'starts as player1\'s turn' do
+      expect(game.current_turn).to be(player1)
+    end
+  end
+
 end
